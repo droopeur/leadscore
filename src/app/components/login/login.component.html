@@ -1,0 +1,35 @@
+<div class="login-container">
+  <mat-card class="login-card">
+  <mat-card-title>Login</mat-card-title>
+  <mat-card-content>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" [style.fontSize.px]="18">
+
+        <mat-form-field>
+          <input type="text" matInput placeholder="Username" formControlName="username">
+          <mat-error *ngIf="submitted && f.username.errors && f.username.errors.required">Username is required</mat-error>
+        </mat-form-field>
+
+
+
+        <mat-form-field>
+          <input matInput placeholder="Password" formControlName="password" [type]="hide ? 'password' : 'text'">
+          <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          <mat-error *ngIf="submitted && f.password.errors && f.password.errors.required">Password is required</mat-error>
+
+        </mat-form-field>
+
+
+      <p *ngIf="error" class="error">
+        Error, password is wrong or you might not have a leadscore.io account
+      </p>
+
+      <div class="button">
+        <button type="submit" mat-raised-button color="primary" [disabled]="loading">
+         Login
+          </button>
+      </div>
+
+    </form>
+  </mat-card-content>
+</mat-card>
+</div>
