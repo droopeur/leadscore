@@ -1,6 +1,23 @@
-<p>
-You've successfully log in
-</p>
-<button (click)="logout()" mat-raised-button color="warn" >
-Logout
-</button>
+<!--NAVBAR-->
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span>Hello {{currentUser.firstName}}</span>
+    <span class="toolbar-spacer"></span>
+    <button (click)="logout()" mat-flat-button color="primary">
+      Logout
+    </button>
+
+  </mat-toolbar-row>
+</mat-toolbar>
+<!--END NAVBAR-->
+
+<!--SECTION BODY-->
+<div class="container mt-5 mb-5 mat-elevation-z8">
+  <mat-tab-group>
+    <mat-tab *ngFor="let tab of contactLists">
+      <ng-template mat-tab-label>{{tab.name}}</ng-template>
+      <app-contact-table [list]="tab"></app-contact-table>
+    </mat-tab>
+  </mat-tab-group>
+</div>
+<!--END SECTION BODY-->

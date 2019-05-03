@@ -11,17 +11,11 @@ import {AuthService} from './_services/auth.service';
 })
 export class AppComponent {
   title = 'leadscoreapp';
-  currentUser: User;
 
   constructor(
-    private router: Router,
-    private authenticationService: AuthService
+
   ) {
-    this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
   }
 
-  logout() {
-    this.authenticationService.logout();
-    this.router.navigate(['/login']);
-  }
+
 }
